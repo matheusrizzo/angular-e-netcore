@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto-angular-e-netcore", "Projeto-angular-e-netcore\Projeto-angular-e-netcore.csproj", "{2540FC63-39BA-4473-9005-F6F7BA09EA03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto-angular-e-netcore", "Projeto-angular-e-netcore\Projeto-angular-e-netcore.csproj", "{2540FC63-39BA-4473-9005-F6F7BA09EA03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Web", "1 - Web", "{BF3E2A5C-FBF1-4C52-BF69-317D261B7E10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{38B477FE-0314-4F2F-A42B-3DB5A70E4FF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{52D28715-DD48-492A-A471-ACAC72702BF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{26889B89-55FB-4922-87EB-4A64B3E98C5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{6C550FD5-4442-4A01-9721-4C825EFE456A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{53051A8D-3668-4E9E-8105-D03D56FD2988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{ED07AF2B-7F2C-4018-94A3-5EC692847E48}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{12EEA22D-8989-4E40-B203-3D220F38877A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{55E2297B-C54E-4BC7-97A7-1BF33E88628D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +33,29 @@ Global
 		{2540FC63-39BA-4473-9005-F6F7BA09EA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2540FC63-39BA-4473-9005-F6F7BA09EA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2540FC63-39BA-4473-9005-F6F7BA09EA03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C550FD5-4442-4A01-9721-4C825EFE456A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C550FD5-4442-4A01-9721-4C825EFE456A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C550FD5-4442-4A01-9721-4C825EFE456A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C550FD5-4442-4A01-9721-4C825EFE456A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53051A8D-3668-4E9E-8105-D03D56FD2988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53051A8D-3668-4E9E-8105-D03D56FD2988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53051A8D-3668-4E9E-8105-D03D56FD2988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53051A8D-3668-4E9E-8105-D03D56FD2988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED07AF2B-7F2C-4018-94A3-5EC692847E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED07AF2B-7F2C-4018-94A3-5EC692847E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED07AF2B-7F2C-4018-94A3-5EC692847E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED07AF2B-7F2C-4018-94A3-5EC692847E48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2540FC63-39BA-4473-9005-F6F7BA09EA03} = {BF3E2A5C-FBF1-4C52-BF69-317D261B7E10}
+		{6C550FD5-4442-4A01-9721-4C825EFE456A} = {38B477FE-0314-4F2F-A42B-3DB5A70E4FF4}
+		{53051A8D-3668-4E9E-8105-D03D56FD2988} = {52D28715-DD48-492A-A471-ACAC72702BF7}
+		{ED07AF2B-7F2C-4018-94A3-5EC692847E48} = {12EEA22D-8989-4E40-B203-3D220F38877A}
+		{12EEA22D-8989-4E40-B203-3D220F38877A} = {26889B89-55FB-4922-87EB-4A64B3E98C5A}
+		{55E2297B-C54E-4BC7-97A7-1BF33E88628D} = {26889B89-55FB-4922-87EB-4A64B3E98C5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {38B87350-C00E-4EA8-AFBB-6C25E215909F}
