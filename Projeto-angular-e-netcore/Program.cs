@@ -1,4 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Infra.Context;
+
 var builder = WebApplication.CreateBuilder(args);
+
+ConfigurationManager configuration = builder.Configuration;
+
+builder.Services.AddDbContext<TemplateContext>(options =>
+    options.UseSqlServer(
+        configuration.GetConnectionString("TemplateDB")).EnableSensitiveDataLogging());
 
 // Add services to the container.
 
@@ -25,3 +34,4 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
+

@@ -1,20 +1,26 @@
-﻿//using Microsoft.EntityFrameworkCore;
+﻿using Domain.Entities;
+using Infra.Extensions;
+using Infra.Mappings;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Context
 {
-    public class TemplateContext /*: DbContext  
+    public class TemplateContext : DbContext
     {
         public TemplateContext(DbContextOptions<TemplateContext> options)
-            :base(options)
+            : base(options)
         {
-            
+
         }
+        public DbSet<User> Users  { get; set; }
 
-        #region DBSets
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UserMap());
 
-        public DbSet<User> { get; set; }
+            modelBuilder.SeedData();
 
-        #endregion
-    }*/
-    { }
+            base.OnModelCreating(modelBuilder);
+        }
+    }
 }
