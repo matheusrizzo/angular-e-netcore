@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Infra.Context;
+using IOC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddDbContext<TemplateContext>(options =>
     options.UseSqlServer(
         configuration.GetConnectionString("TemplateDB")).EnableSensitiveDataLogging());
+
+NativeInjector.RegisterServices(builder.Services);
 
 // Add services to the container.
 
