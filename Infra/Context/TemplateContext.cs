@@ -19,6 +19,7 @@ namespace Infra.Context
             modelBuilder.ApplyConfiguration(new UserMap());
 
             modelBuilder.SeedData();
+            modelBuilder.ApplyModelConfiguration();
 
             base.OnModelCreating(modelBuilder);
         }

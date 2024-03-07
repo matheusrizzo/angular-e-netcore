@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.ViewModels;
 
 namespace Application.Interfaces
 {
     public interface IUserServices
     {
-        void Test();
+        List<UserViewModel> Get();
+        bool Post(UserViewModel userViewModel);
+        UserViewModel GetById(string id);
+        bool Put(UserViewModel userViewModel);
+        bool Delete(string id);
+        UserAuthenticateResponseViewModel Authenticate(UserAuthenticateRequestViewModel user);
     }
 }

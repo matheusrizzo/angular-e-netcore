@@ -1,6 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Infra.Context;
 using IOC;
+using Application.AutoMapper;
+using Swagger;
+using System.Text;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Auth.Model;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +20,31 @@ builder.Services.AddDbContext<TemplateContext>(options =>
         configuration.GetConnectionString("TemplateDB")).EnableSensitiveDataLogging());
 
 NativeInjector.RegisterServices(builder.Services);
+builder.Services.AddAutoMapper(typeof(AutoMapperSetup));
+builder.Services.AddSwaggerConfiguration();
+
+#region Authentication
+
+var key = Encoding.ASCII.GetBytes(Settings.Secret);
+builder.Services.AddAuthentication(o =>
+{
+    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+{
+    o.RequireHttpsMetadata = false;
+    o.SaveToken = true;
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
+#endregion
+
 
 // Add services to the container.
 
@@ -28,7 +62,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseSwaggerConfiguration();
+app.UseAuthentication();
+app.UseAuthorization(); 
 
 app.MapControllerRoute(
     name: "default",
