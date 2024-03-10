@@ -37,6 +37,10 @@
     <ProjectReference Include="..\Swagger\Swagger.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\_data-services\" />
+  </ItemGroup>
+
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

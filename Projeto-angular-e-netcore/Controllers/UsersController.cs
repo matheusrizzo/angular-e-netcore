@@ -22,7 +22,7 @@ namespace Projeto_angular_e_netcore.Controllers
             this._logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet, AllowAnonymous]
         public IActionResult Get()
         {
             return Ok(this.userServices.Get());
@@ -44,7 +44,7 @@ namespace Projeto_angular_e_netcore.Controllers
             return Ok(this.userServices.Post(userViewModel));
         }
 
-        [HttpPut]
+        [HttpPut, AllowAnonymous]
         public IActionResult Put(UserViewModel userViewModel) { 
             return Ok(this.userServices.Put(userViewModel));
      
