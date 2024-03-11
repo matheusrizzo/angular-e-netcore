@@ -20,8 +20,8 @@ export class UserDataService {
     return this.http.put(this.module, data);
   }
 
-  delete() {
-    return this.http.delete(this.module);
+  delete(data: any) {
+    return this.http.delete(this.module + '/' + data);
   }
 
   authenticate(data: any) {

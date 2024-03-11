@@ -1,10 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.ViewModels;
-using Auth.Services;
-using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Projeto_angular_e_netcore.Controllers
 {
@@ -14,15 +11,15 @@ namespace Projeto_angular_e_netcore.Controllers
     {
         private readonly IUserServices userServices;
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<UsersController> _logger;
 
-        public UsersController(ILogger<WeatherForecastController> logger, IUserServices userService)
+        public UsersController(ILogger<UsersController> logger, IUserServices userService)
         {
             this.userServices = userService; 
             this._logger = logger;
         }
 
-        [HttpGet, AllowAnonymous]
+        [HttpGet]
         public IActionResult Get()
         {
             return Ok(this.userServices.Get());
@@ -35,7 +32,7 @@ namespace Projeto_angular_e_netcore.Controllers
         }
 
 
-        [HttpPost, AllowAnonymous]  
+        [HttpPost]  
         public IActionResult Post(UserViewModel userViewModel)
         {
             if (!ModelState.IsValid)
@@ -44,16 +41,16 @@ namespace Projeto_angular_e_netcore.Controllers
             return Ok(this.userServices.Post(userViewModel));
         }
 
-        [HttpPut, AllowAnonymous]
+        [HttpPut]
         public IActionResult Put(UserViewModel userViewModel) { 
             return Ok(this.userServices.Put(userViewModel));
      
         }
 
-        [HttpDelete]
-        public IActionResult Delete()
+        [HttpDelete("{userId}")]
+        public IActionResult Delete(string userId)
         {
-            string userId = TokenServices.GetValuewFromClaim(HttpContext.User.Identity, ClaimTypes.NameIdentifier);
+            //string userId = TokenServices.GetValuewFromClaim(HttpContext.User.Identity, ClaimTypes.NameIdentifier);
             return Ok(this.userServices.Delete(userId));
         }
 

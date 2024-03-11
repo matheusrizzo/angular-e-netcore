@@ -8,6 +8,6 @@ namespace Auth.Model
 {
     public static class Settings
     {
-        public static string Secret = "Angular-netcoreAngular-netcore";
+        public static string Secret = "Angular-netcoreAngular-netcore-preciso-de-chave@@$#grn";
     }
 }

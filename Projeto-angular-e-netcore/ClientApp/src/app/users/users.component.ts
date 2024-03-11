@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   constructor(private userDataService: UserDataService) { }
 
   ngOnInit() {
-    this.get();
+    
   }
 
   get() {
@@ -71,6 +71,47 @@ export class UsersComponent implements OnInit {
     this.user = user;
     this.showList = false;
   }
+
+  delete(user: any) {
+    this.userDataService.delete(user.id).subscribe(data => {
+      if (data) {
+        alert('Usuario removido com sucesso');
+        this.get();
+        this.user = {};
+      }
+      else {
+        alert('Erro ao remover usuário');
+      }
+    }, error => {
+      console.log(error);
+      alert('erro interno do sistema - DELETE');
+    });
+  }
+
+  authenticate() {
+      this.userDataService.authenticate(this.userLogin).subscribe((data:any) => {
+      if (data.user) {
+        localStorage.setItem('user_logged', JSON.stringify(data));
+        this.isAuthenticated = true;
+        this.get();
+        this.getUserData();
+      }
+      else {
+        alert('Erro ao autenticar usuário');
+      }
+    }, error => {
+      console.log(error);
+      alert('erro interno do sistema - Authenticate');
+    });
+  }
+  getUserData() {
+    const userLoggedString = localStorage.getItem('user_logged');
+    if (userLoggedString !== null) {
+      this.userLogged = JSON.parse(userLoggedString);
+    }
+    this.isAuthenticated = this.userLogged != null;
+  }
+
 }
 
 
